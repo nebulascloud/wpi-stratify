@@ -172,3 +172,84 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# .gitignore and .gitattributes Standards
+
+This document outlines the standards for `.gitignore` and `.gitattributes` files in the `wpi-stratify` repository.
+
+## 1. `.gitignore` Standards
+
+The `.gitignore` file is essential for preventing unnecessary or sensitive files from being committed to the repository. The following standards will be adopted for the `wpi-stratify` mono-repo.
+
+### General Ignores
+
+These rules apply to all developers, regardless of their operating system or editor.
+
+```gitignore
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor Configuration
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+```
+
+### Frontend (Node.js / Vite / TypeScript)
+
+These rules are specific to the `frontend` directory.
+
+```gitignore
+# Node.js Dependencies
+frontend/node_modules/
+
+# Vite Build Output
+frontend/dist/
+
+# Environment Variables
+frontend/.env*
+!frontend/.env.example
+
+# Log Files
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+```
+
+### Backend (Python)
+
+The existing Python `.gitignore` rules are comprehensive and will be maintained. They cover virtual environments, byte-compiled files, distribution artifacts, and tool-specific caches.
+
+## 2. `.gitattributes` Standards
+
+The `.gitattributes` file is used to ensure consistent line endings across different operating systems. This prevents issues with file diffs and merge conflicts caused by line ending differences.
+
+The following configuration will be used:
+
+```
+# Set default behavior to automatically handle line endings.
+* text=auto
+
+# Explicitly declare text files to be normalized.
+*.html text
+*.css text
+*.js text
+*.jsx text
+*.ts text
+*.tsx text
+*.json text
+*.md text
+*.py text
+
+# Declare files that should always have CRLF line endings (for Windows compatibility).
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Declare binary files that should not be modified.
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+```
