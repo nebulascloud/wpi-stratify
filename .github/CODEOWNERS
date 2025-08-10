@@ -1,0 +1,5 @@
+# This is a basic CODEOWNERS file.
+# As the team grows, you can add more specific owners for different parts of the codebase.
+# For now, all changes will require a review from the primary developer.
+
+* @YourGitHubUsername
