@@ -12,16 +12,12 @@ Audience & Usage
 
 ## 1) Plan Before You Code (required)
 
-Before starting any implementation:
-- Define the problem, scope, and Acceptance Criteria in Jira (link Confluence when applicable).
-- Identify risks/assumptions and how you’ll validate them.
-- Decide minimal tests you’ll write/run to prove it works.
-- Create a feature branch from up‑to‑date `main` (see Section 3 and 4).
+Non‑trivial implementation work requires a plan file first. Enter **PLAN MODE** using the prompt at `.github/prompts/plan-mode.md` (paste into Copilot Chat or invoke a custom mode) and generate `docs/plans/NN-TitleCaseSubject.md` with the required sections. Only after that plan is committed should code be written; reference the plan in your PR. Agents must decline substantive code generation if no plan file is referenced.
 
-Completion gate for planning:
-- [ ] Jira ticket has a clear Description and AC
-- [ ] Links to any docs/specs
-- [ ] Validation approach noted (tests + manual checks)
+Planning completion gate:
+- [ ] Jira ticket has clear Description + AC
+- [ ] Plan file exists in `docs/plans/` (all required sections filled)
+- [ ] Validation (tests + manual) noted & linked
 
 ---
 
