@@ -177,3 +177,26 @@ Anti‑patterns (avoid):
 ---
 
 Status: Initial version for WPI‑25. Update as standards evolve.
+
+---
+
+## 8) Security Guardrails (WPI-29)
+Principle: Treat repo as public; secrets only via env vars / managed store.
+
+Rules (must):
+- No secrets (keys/tokens/certs) in Git or frontend bundle.
+- Add/update `.env.example` (placeholders only) when new required vars appear; never commit real `.env`.
+- Secret API access happens server-side only (proxy if needed).
+- Names: UPPER_SNAKE_CASE with domain prefix (e.g., `AUTH_JWT_SECRET`).
+- Rotate secrets ≤90d; on exposure: revoke -> replace -> Jira incident -> update doc.
+- Redact in logs (first4…last4). Never store plaintext passwords (Argon2 > bcrypt; no reversible storage).
+- Add `.gitignore` entry before creating any local secret file.
+
+PR checklist (if touching secrets/integrations):
+- [ ] `.env.example` updated
+- [ ] README env vars documented (purpose + required/optional)
+- [ ] No hard‑coded secrets
+- [ ] Logs safe / redaction applied
+- [ ] Confluence page updated if new pattern
+
+Reference: Confluence Security Guardrails (WPI-29) page.
